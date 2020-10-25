@@ -1,0 +1,59 @@
+.outline-text-white{
+    -webkit-text-stroke: 2px rgb(255, 255, 255);
+}
+
+.bottom-shadow{
+    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.24);
+}
+
+.soft-shadow{
+    box-shadow:
+        0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+        0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+        0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+        0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+
+.soft-shadow-sm{
+    box-shadow:
+        0 2.8px 2.2px rgba(104, 104, 104, 0.034),
+        0 6.7px 5.3px rgba(104, 104, 104, 0.048),
+        0 12.5px 10px rgba(104, 104, 104, 0.06),
+        0 9.3px 11.9px rgba(150, 148, 148, 0.075),
+        0 2.8px 9.4px rgba(104, 104, 104, 0.048),
+        0 13px 19px rgba(104, 104, 104, 0.055);
+}
+
+.operator-label{
+    margin-bottom: 0px;
+    height: 100%;
+    vertical-align: center;
+}
+
+.center{
+    margin: auto;
+}
+
+
+.scrollbar-grey::-webkit-scrollbar{
+    
+    width: 7px;
+    background-color: rgb(245, 245, 245);
+}
+
+.scrollbar-grey::-webkit-scrollbar-thumb{
+    
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: rgb(222, 222, 222); 
+}
+
+
+.scrollbar-grey::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: rgb(245, 245, 245);
+    border-radius: 10px; 
+}

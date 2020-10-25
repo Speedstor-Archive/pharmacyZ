@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title></title>
+  <meta name="description" content="">
+  <meta name="author" content="PharmacyZ">
+
+  <link rel="stylesheet" href="css/index.css?v=1.0">
+
+  <!-- outside library -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>
+
+<body style="height: 100vh; width: 100%;">
+    <script src="js/pharmacyz.js"></script>
+    <!-- Revoke Modal -->
+    <div class="modal fade" id="revokeAccessModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Revoke Access</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body" style="display: flex; flex-direction: column;">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1" style="border-color: red;">Password</span>
+                </div>
+                <input type="password" class='form-control' name='accessPassword' placeholder="password..." style="border-color: red;"/>
+            </div>
+            
+            <!-- confirm employee-->   
+            <div class="card" style="margin: 20px; display: inline-block; align-self: center;">
+                <div class="card-body" style="padding: 18px 28px 18px 28px;">
+                    <label for="operatorName">Operator</label>
+                    <!-- Name Tag -->
+                    <div class="input-group mb-3 bottom-shadow" style="margin-bottom: 0px !important;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon3">Name</span>
+                        </div>
+                        <input type="text" class="form-control" style="min-width: 270px; display: block;" id="operatorName" aria-describedby="operatorName" value="John Sammel" disabled/>
+                    </div>
+                    <div class="container soft-shadow-sm" style="background-color: blanchedalmond; width: 80%; padding: 10px 20px; margin-bottom: 20px;">
+                        <div class="row">
+                            <div class="col-5" style="border-right: 1px solid rgba(87, 87, 87, 0.445);">
+                                <label class="operator-label">shift: </label>
+                            </div>
+                            <div class="col">
+                                <label class="operator-label">8:00 - 9:00 </label>
+                            </div>
+                        </div>
+                        
+                        <div class="w-100" style="height: 4px;"></div>
+
+                        <div class="row">
+                            <div class="col-5" style="border-right: 1px solid rgba(87, 87, 87, 0.445);">
+                                <label class="operator-label">access till: </label>
+                            </div>
+                            <div class="col">
+                                <label class="operator-label">9:00 </label>
+                            </div>
+                        </div>
+
+                        <div class="w-100" style="height: 4px;"></div>
+
+                        <div class="row">
+                            <div class="col-5" style="border-right: 1px solid rgba(87, 87, 87, 0.445);">
+                                <label class="operator-label">remaining: </label>
+                            </div>
+                            <div class="col">
+                                <label class="operator-label">00:45   </label>
+                            </div>
+                        </div>
+                        
+                        <div class="w-100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-success">Confirm</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    
+    <!-- Extend Modal -->
+    <div class="modal fade" id="extendAccessModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Extend Access</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="display: flex; flex-direction: column;">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1" style="border-color: red;">Password</span>
+                    </div>
+                    <input type="password" class='form-control' name='accessPassword' placeholder="password..." style="border-color: red;"/>
+                </div>
+                
+                <!-- confirm employee-->   
+                <div class="card" style="margin: 20px; display: inline-block; align-self: center;">
+                    <div class="card-body" style="padding: 18px 28px 18px 28px;">
+                        <label for="operatorName">Operator</label>
+                        <!-- Name Tag -->
+                        <div class="input-group mb-3 bottom-shadow" style="margin-bottom: 0px !important;">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon3">Name</span>
+                            </div>
+                            <input type="text" class="form-control" style="min-width: 270px; display: block;" id="operatorName" aria-describedby="operatorName" value="John Sammel" disabled/>
+                        </div>
+                        <div class="container soft-shadow-sm" style="background-color: blanchedalmond; width: 80%; padding: 10px 20px; margin-bottom: 20px;">
+                            <div class="row">
+                                <div class="col-5" style="border-right: 1px solid rgba(87, 87, 87, 0.445);">
+                                    <label class="operator-label">shift: </label>
+                                </div>
+                                <div class="col">
+                                    <label class="operator-label">8:00 - 9:00 </label>
+                                </div>
+                            </div>
+                            
+                            <div class="w-100" style="height: 4px;"></div>
+    
+                            <div class="row">
+                                <div class="col-5" style="border-right: 1px solid rgba(87, 87, 87, 0.445);">
+                                    <label class="operator-label">access till: </label>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="time" value="17:58" style="display: inline-block; width: 100px; border-color: green;">
+                                </div>
+                            </div>
+    
+                            <div class="w-100" style="height: 4px;"></div>
+    
+                            <div class="row">
+                                <div class="col-5" style="border-right: 1px solid rgba(87, 87, 87, 0.445);">
+                                    <label class="operator-label">remaining: </label>
+                                </div>
+                                <div class="col">
+                                    <label class="operator-label">00:45   </label>
+                                </div>
+                            </div>
+                            
+                            <div class="w-100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success">Confirm</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+    
+    <!-- Revoke Modal -->
+    <div class="modal fade" id="switchOperatorModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Switch Operator</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body" style="display: flex; flex-direction: column;">
+            not yet implemented
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-success">Confirm</button>
+        </div>
+        </div>
+    </div>
+    </div>
+    
+    <div id="appWrap" style="width: 100%; height: 100vh; background: rgb(238,240,232); background: radial-gradient(circle, rgb(255, 255, 251) 0%, rgb(239, 250, 239) 100%); ">
+            
+    <div class="card" id="logo-card" style="transition: 100ms ease-in-out all; margin: 20px; display: inline-block; padding: 20px 80px 20px 20px; background: rgb(220,243,247); background: linear-gradient(209deg, rgba(220,243,247,1) 0%, rgba(204,203,241,1) 100%);">
+        <div class="card-body">
+            <h1 class="" style="font-weight: 900; font-size: 3rem;">PharmacyZ</h1>
+        </div>
+    </div>
+
+    <div class="card" id="operator-card" style="margin: 20px; display: inline-block; float: right;">
+        <div class="card-body" style="padding: 18px 28px 18px 28px;">
+            <label for="operatorName">Operator</label>
+            <!-- Name Tag -->
+            <div class="input-group mb-3 bottom-shadow" style="margin-bottom: 0px !important;">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">Name</span>
+                </div>
+                <input type="text" class="form-control" style="min-width: 270px; display: block;" id="operatorName" aria-describedby="operatorName" value="John Sammel" disabled/>
+            </div>
+            <div class="container soft-shadow-sm" style="background-color: blanchedalmond; width: 80%; padding: 10px 20px; margin-bottom: 20px;">
+                <div class="row">
+                    <div class="col-5" style="border-right: 1px solid rgba(87, 87, 87, 0.445);">
+                        <label class="operator-label">shift: </label>
+                    </div>
+                    <div class="col">
+                        <label class="operator-label">8:00 - 9:00 </label>
+                    </div>
+                </div>
+                
+                <div class="w-100" style="height: 4px;"></div>
+
+                <div class="row">
+                    <div class="col-5" style="border-right: 1px solid rgba(87, 87, 87, 0.445);">
+                        <label class="operator-label">access till: </label>
+                    </div>
+                    <div class="col">
+                        <label class="operator-label">9:00 </label>
+                    </div>
+                </div>
+
+                <div class="w-100" style="height: 4px;"></div>
+
+                <div class="row">
+                    <div class="col-5" style="border-right: 1px solid rgba(87, 87, 87, 0.445);">
+                        <label class="operator-label">remaining: </label>
+                    </div>
+                    <div class="col">
+                        <label class="operator-label">00:45   </label>
+                    </div>
+                </div>
+                
+                <div class="w-100"></div>
+            </div>
+            <div id="operatorButton-container">
+                <button class='btn-sm btn-outline-info' data-toggle="modal" data-target="#extendAccessModel" style="width: 49%"> extend access</button>
+                <button class='btn-sm btn-outline-danger' data-toggle="modal" data-target="#revokeAccessModel" style="width: 49%"> revoke access</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" id="scanPrompt" style="display: block; width: 870px; font-family: ui-sans-serif; margin: 6% 0px 0px 16%;">
+        <div class="card-body">
+            <div class="" style="margin-left: 10%;">
+                <img src="img/scanner.png" style="width: 30%; display: inline-block"/>
+                <h2 style="font-weight: 600; display: inline-block">Scan ID card to continue...</h2>
+            </div>
+            <div class="input-group mb-3">
+                <input type="number" class='form-control' name='patient-id' placeholder="manually type id..." />
+                <div class="input-group-append">
+                    <button class="btn btn-success" type="button" onclick="loginPatient();">Go</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" id="patientInfo" style="background: white; display: none; width: calc(100vw - 433px - 40px); height: calc(100vh - 176px); margin: 0px 20px 20px 20px; min-height: 720px;">
+        <div class="card-body" style="width: 100%; height: 100%;">
+            <div class="wrap" style="display: flex; flex-direction: row; height: 100%; width: 100%;">
+                <div class="card-body" style="height: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; padding-left: 35px;">
+                    <img src="img/placeholderProfile.jpg" style="height: 40%; margin-bottom: 20px;"/>
+                    <div class="container" style="display: inline-block; width: auto; min-width: 300px; display: none;">
+                        <div class="row">
+                            <div class="col"><label style="margin: 0px">Name:</label></div>
+                            <div class="col-9"><label style="margin: 0px">Carl Yang</label></div>
+                        </div>
+                    </div>
+
+                    <table class="table table-hover" style="float: left; width: auto; min-width: 400px; max-width: 100%;">
+                        <tbody>
+                            <tr>
+                              <th scope="row">Name: </th>
+                              <td>Carl Yang</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">D.O.B: </th>
+                              <td>12/30/2002</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Sex: </th>
+                              <td>Male &#9794;</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Expiration Date: </th>
+                              <td><input disabled type="date" value="2020-07-16"/></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Nationality: </th>
+                              <td>China&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#127464;&#127475;</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">ID number: </th>
+                              <td>9876543211</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Height/Weight: </th>
+                                <td>***cm / **kg</td>
+                            </tr>
+                            <th scope="row">Address: </th>
+                            <td>*****************************</td>
+                        </tbody>
+                      </table>
+                </div>
+                <div class="card-body" style="height: 100%;">
+                    <div class="placeholder" style="height: 9%">
+                    </div>
+                    <nav class="navbar navbar-light bg-light justify-content-between" style="background-color: #e3f2fd !important; border-radius: 4px; margin-bottom: 10px;">
+                        <a class="navbar-brand">Prescriptions</a>
+                        <form class="form-inline">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </nav>
+
+                    <nav class="card scrollbar-grey" style="height: 24px; display: flex; flex-direction: row; justify-content: space-between; padding: 0px 20px 0px 20px;"><label style="margin: 0px;">id</label><label style="margin: 0px;">descriptions</label><label style="margin: 0px;">allowed left</label></nav>
+                    <ul class="list-group scrollbar-grey" style="overflow-y: auto; max-height: calc(100vh - 420px); border-bottom: 1px rgba(141, 141, 141, 0.466) solid;">
+                        <li class="list-group-item" style="display: flex; flex-direction: row; align-items: stretch;">
+                            <label style="margin: 0px; margin-right: 10px; display:flex; align-items: center; vertical-align: center; font-weight: bold; border-right: 1px rgba(99, 99, 99, 0.397) solid; padding-right: 20px;">#412</label>
+                            <div class="container" style="flex-grow: 2; width: calc(100% - 220px);">
+                                <div class="" style="">
+                                    <h4 style="display: inline-block;">Oxycodone</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">Prescription Expiry: <input type="date" value="2020-12-16" disabled/></div>
+                                    <div class="col">Allowed Per Week: 2</div>
+                                    <div class="w-100" style="height: 6px;"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">Prescription Date:&nbsp;&nbsp; <input type="date" value="2020-07-16" disabled/></div>
+
+                                </div>
+                            </div>
+                            <label style="margin: 0px; padding-left: 17px; display:flex; align-items: center; vertical-align: center; font-weight: bold; border-left: 1px rgba(99, 99, 99, 0.397) solid;">2</label>
+                        </li>
+                        <li class="list-group-item" style="display: flex; flex-direction: row; align-items: stretch;">
+                            <label style="margin: 0px; margin-right: 10px; display:flex; align-items: center; vertical-align: center; font-weight: bold; border-right: 1px rgba(99, 99, 99, 0.397) solid; padding-right: 20px;">#412</label>
+                            <div class="container" style="flex-grow: 2; width: calc(100% - 220px);">
+                                <div class="" style="">
+                                    <h4 style="display: inline-block;">Oxycodone</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">Prescription Expiry: <input type="date" value="2020-12-16" disabled/></div>
+                                    <div class="col">Allowed Per Week: 2</div>
+                                    <div class="w-100" style="height: 6px;"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">Prescription Date:&nbsp;&nbsp; <input type="date" value="2020-07-16" disabled/></div>
+
+                                </div>
+                            </div>
+                            <label style="margin: 0px; padding-left: 17px; display:flex; align-items: center; vertical-align: center; font-weight: bold; border-left: 1px rgba(99, 99, 99, 0.397) solid;">2</label>
+                        </li>
+                        <li class="list-group-item" style="display: flex; flex-direction: row; align-items: stretch;">
+                            <label style="margin: 0px; margin-right: 10px; display:flex; align-items: center; vertical-align: center; font-weight: bold; border-right: 1px rgba(99, 99, 99, 0.397) solid; padding-right: 20px;">#412</label>
+                            <div class="container" style="flex-grow: 2; width: calc(100% - 220px);">
+                                <div class="" style="">
+                                    <h4 style="display: inline-block;">Oxycodone</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">Prescription Expiry: <input type="date" value="2020-12-16" disabled/></div>
+                                    <div class="col">Allowed Per Week: 2</div>
+                                    <div class="w-100" style="height: 6px;"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">Prescription Date:&nbsp;&nbsp; <input type="date" value="2020-07-16" disabled/></div>
+
+                                </div>
+                            </div>
+                            <label style="margin: 0px; padding-left: 17px; display:flex; align-items: center; vertical-align: center; font-weight: bold; border-left: 1px rgba(99, 99, 99, 0.397) solid;">2</label>
+                        </li>
+                        <li class="list-group-item" style="display: flex; flex-direction: row; align-items: stretch;">
+                            <label style="margin: 0px; margin-right: 10px; display:flex; align-items: center; vertical-align: center; font-weight: bold; border-right: 1px rgba(99, 99, 99, 0.397) solid; padding-right: 20px;">#412</label>
+                            <div class="container" style="flex-grow: 2; width: calc(100% - 220px);">
+                                <div class="" style="">
+                                    <h4 style="display: inline-block;">Oxycodone</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">Prescription Expiry: <input type="date" value="2020-12-16" disabled/></div>
+                                    <div class="col">Allowed Per Week: 2</div>
+                                    <div class="w-100" style="height: 6px;"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">Prescription Date:&nbsp;&nbsp; <input type="date" value="2020-07-16" disabled/></div>
+
+                                </div>
+                            </div>
+                            <label style="margin: 0px; padding-left: 17px; display:flex; align-items: center; vertical-align: center; font-weight: bold; border-left: 1px rgba(99, 99, 99, 0.397) solid;">2</label>
+                        </li>
+                        <li class="list-group-item" style="display: flex; flex-direction: row; align-items: stretch;">
+                            <label style="margin: 0px; margin-right: 10px; display:flex; align-items: center; vertical-align: center; font-weight: bold; border-right: 1px rgba(99, 99, 99, 0.397) solid; padding-right: 20px;">#412</label>
+                            <div class="container" style="flex-grow: 2; width: calc(100% - 220px);">
+                                <div class="" style="">
+                                    <h4 style="display: inline-block;">Oxycodone</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">Prescription Expiry: <input type="date" value="2020-12-16" disabled/></div>
+                                    <div class="col">Allowed Per Week: 2</div>
+                                    <div class="w-100" style="height: 6px;"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">Prescription Date:&nbsp;&nbsp; <input type="date" value="2020-07-16" disabled/></div>
+
+                                </div>
+                            </div>
+                            <label style="margin: 0px; padding-left: 17px; display:flex; align-items: center; vertical-align: center; font-weight: bold; border-left: 1px rgba(99, 99, 99, 0.397) solid;">2</label>
+                        </li>
+                        <li class="list-group-item" style="display: flex; flex-direction: row; align-items: stretch;">
+                            <label style="margin: 0px; margin-right: 10px; display:flex; align-items: center; vertical-align: center; font-weight: bold; border-right: 1px rgba(99, 99, 99, 0.397) solid; padding-right: 20px;">#412</label>
+                            <div class="container" style="flex-grow: 2; width: calc(100% - 220px);">
+                                <div class="" style="">
+                                    <h4 style="display: inline-block;">Oxycodone</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">Prescription Expiry: <input type="date" value="2020-12-16" disabled/></div>
+                                    <div class="col">Allowed Per Week: 2</div>
+                                    <div class="w-100" style="height: 6px;"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">Prescription Date:&nbsp;&nbsp; <input type="date" value="2020-07-16" disabled/></div>
+
+                                </div>
+                            </div>
+                            <label style="margin: 0px; padding-left: 17px; display:flex; align-items: center; vertical-align: center; font-weight: bold; border-left: 1px rgba(99, 99, 99, 0.397) solid;">2</label>
+                        </li>
+                        <li class="list-group-item" style="display: flex; flex-direction: row; align-items: stretch;">
+                            <label style="margin: 0px; margin-right: 10px; display:flex; align-items: center; vertical-align: center; font-weight: bold; border-right: 1px rgba(99, 99, 99, 0.397) solid; padding-right: 20px;">#412</label>
+                            <div class="container" style="flex-grow: 2; width: calc(100% - 220px);">
+                                <div class="" style="">
+                                    <h4 style="display: inline-block;">Oxycodone</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">Prescription Expiry: <input type="date" value="2020-12-16" disabled/></div>
+                                    <div class="col">Allowed Per Week: 2</div>
+                                    <div class="w-100" style="height: 6px;"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">Prescription Date:&nbsp;&nbsp; <input type="date" value="2020-07-16" disabled/></div>
+
+                                </div>
+                            </div>
+                            <label style="margin: 0px; padding-left: 17px; display:flex; align-items: center; vertical-align: center; font-weight: bold; border-left: 1px rgba(99, 99, 99, 0.397) solid;">2</label>
+                        </li>
+                        <li class="list-group-item" style="display: flex; flex-direction: row; align-items: stretch;">
+                            <label style="margin: 0px; margin-right: 10px; display:flex; align-items: center; vertical-align: center; font-weight: bold; border-right: 1px rgba(99, 99, 99, 0.397) solid; padding-right: 20px;">#412</label>
+                            <div class="container" style="flex-grow: 2; width: calc(100% - 220px);">
+                                <div class="" style="">
+                                    <h4 style="display: inline-block;">Oxycodone</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">Prescription Expiry: <input type="date" value="2020-12-16" disabled/></div>
+                                    <div class="col">Allowed Per Week: 2</div>
+                                    <div class="w-100" style="height: 6px;"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">Prescription Date:&nbsp;&nbsp; <input type="date" value="2020-07-16" disabled/></div>
+
+                                </div>
+                            </div>
+                            <label style="margin: 0px; padding-left: 17px; display:flex; align-items: center; vertical-align: center; font-weight: bold; border-left: 1px rgba(99, 99, 99, 0.397) solid;">2</label>
+                        </li>
+                        <li class="list-group-item" style="display: flex; flex-direction: row; align-items: stretch;">
+                            <label style="margin: 0px; margin-right: 10px; display:flex; align-items: center; vertical-align: center; font-weight: bold; border-right: 1px rgba(99, 99, 99, 0.397) solid; padding-right: 20px;">#412</label>
+                            <div class="container" style="flex-grow: 2; width: calc(100% - 220px);">
+                                <div class="" style="">
+                                    <h4 style="display: inline-block;">Oxycodone</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">Prescription Expiry: <input type="date" value="2020-12-16" disabled/></div>
+                                    <div class="col">Allowed Per Week: 2</div>
+                                    <div class="w-100" style="height: 6px;"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">Prescription Date:&nbsp;&nbsp; <input type="date" value="2020-07-16" disabled/></div>
+
+                                </div>
+                            </div>
+                            <label style="margin: 0px; padding-left: 17px; display:flex; align-items: center; vertical-align: center; font-weight: bold; border-left: 1px rgba(99, 99, 99, 0.397) solid;">2</label>
+                        </li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<div class="" style="margin: 20px; display: inline-block; float: right; position: sticky; bottom: 30px; right: 30px;">
+    <button class="btn btn-info" onclick="toggleBackground();">background</button>
+    <button class="btn btn-warning" data-toggle="modal" data-target="#switchOperatorModel" >switch operator</button>
+    <button class="btn btn-danger" onclick="exitPatient();" id="exitButton" style="box-sizing: border-box; display: none;">Exit/Back</button>
+</div>
+</body>
+</html>
